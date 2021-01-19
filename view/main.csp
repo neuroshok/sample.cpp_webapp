@@ -1,0 +1,5 @@
+<%view view::header %>
+
+    <h1>Hi</h1>
+
+<%view view::footer %>
