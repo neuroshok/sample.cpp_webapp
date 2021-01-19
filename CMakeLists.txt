@@ -117,6 +117,6 @@ if (WEBAPP_SERVER)
     add_custom_command(
         TARGET webapp_server POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${WEBAPP_ROOT}/resource ${WEBAPP_OUTPUT}/resource
+        ${WEBAPP_ROOT}/server/resource ${WEBAPP_OUTPUT}/resource
         COMMENT "Copy ${WEBAPP_ROOT}/resource to ${WEBAPP_OUTPUT}/resource")
 endif()
