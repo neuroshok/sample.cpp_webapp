@@ -36,7 +36,7 @@ endif()
 file(GLOB_RECURSE WEBAPP_SERVER_SOURCES
         "server/include/controller/*.hpp"
         "server/source/controller/*.cpp"
-        "server/source/*.cpp"")
+        "server/source/*.cpp")
 
 # client
 file(GLOB_RECURSE WEBAPP_CLIENT_SOURCES
@@ -70,7 +70,7 @@ endif()
 # drogon
 if (WEBAPP_SERVER)
     set(BUILD_EXAMPLES OFF)
-    add_subdirectory(third_party/drogon)
+    add_subdirectory(third_party/drogon EXCLUDE_FROM_ALL)
     add_dependencies(webapp_server drogon_ctl)
 endif()
 
