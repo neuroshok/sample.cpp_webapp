@@ -36,8 +36,7 @@ endif()
 file(GLOB_RECURSE WEBAPP_SERVER_SOURCES
         "server/include/controller/*.hpp"
         "server/source/controller/*.cpp"
-        "server/source/*.cpp"
-        "server/resource/data/style.css")
+        "server/source/*.cpp"")
 
 # client
 file(GLOB_RECURSE WEBAPP_CLIENT_SOURCES
@@ -106,17 +105,13 @@ if (WEBAPP_CLIENT)
 endif()
 
 if (WEBAPP_SERVER)
-    # copy app data
-    add_custom_command(
-        TARGET webapp_server POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${WEBAPP_ROOT}/client/app ${WEBAPP_OUTPUT}/app
-        COMMENT "Copy ${WEBAPP_ROOT}/client/app to ${WEBAPP_ROOT}/app")
+    # install app
+    install(DIRECTORY ${INPHASE_ROOT}/client/app
+            DESTINATION ${INPHASE_OUTPUT}
+    )
 
-    # copy server resources
-    add_custom_command(
-        TARGET webapp_server POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${WEBAPP_ROOT}/server/resource ${WEBAPP_OUTPUT}/resource
-        COMMENT "Copy ${WEBAPP_ROOT}/resource to ${WEBAPP_OUTPUT}/resource")
+    # install server resource
+    install(DIRECTORY ${INPHASE_ROOT}/server/resource
+            DESTINATION ${INPHASE_OUTPUT}
+    )
 endif()
